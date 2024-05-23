@@ -13,13 +13,16 @@ namespace MultiWindowTextEditor
             InitializeComponent();
         }
 
+        // Метод відкриття файлу
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Створення діалогового вікна відкриття файлу
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Rich Text Files|*.rtf|Text Files|*.txt|All Files|*.*";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                // Завантаження файлу у різному форматі залежно від розширення
                 if (Path.GetExtension(openFileDialog.FileName).ToLower() == ".rtf")
                 {
                     richTextBox1.LoadFile(openFileDialog.FileName, RichTextBoxStreamType.RichText);
@@ -31,13 +34,16 @@ namespace MultiWindowTextEditor
             }
         }
 
+        // Метод збереження файлу
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Створення діалогового вікна збереження файлу
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Rich Text Files|*.rtf|Text Files|*.txt|All Files|*.*";
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
+                // Збереження файлу у різному форматі залежно від розширення
                 if (Path.GetExtension(saveFileDialog.FileName).ToLower() == ".rtf")
                 {
                     richTextBox1.SaveFile(saveFileDialog.FileName, RichTextBoxStreamType.RichText);
@@ -49,17 +55,20 @@ namespace MultiWindowTextEditor
             }
         }
 
+        // Метод створення нового вікна
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TextEditorForm newForm = new TextEditorForm();
             newForm.Show();
         }
 
+        // Метод вихід з програми
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        // Метод зміни шрифту тексту
         private void changeFontToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FontDialog fontDialog = new FontDialog();
@@ -69,21 +78,25 @@ namespace MultiWindowTextEditor
             }
         }
 
+        // Метод вирівнювання тексту ліворуч
         private void alignLeftToolStripMenuItem_Click(object sender, EventArgs e)
         {
             richTextBox1.SelectionAlignment = HorizontalAlignment.Left;
         }
 
+        // Метод вирівнювання тексту по центру
         private void alignCenterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
         }
 
+        // Метод вирівнювання тексту праворуч
         private void alignRightToolStripMenuItem_Click(object sender, EventArgs e)
         {
             richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
         }
 
+        // Метод вставки зображення
         private void insertImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -96,11 +109,13 @@ namespace MultiWindowTextEditor
             }
         }
 
+        // Метод виділення синтаксичних ключових слів
         private void syntaxHighlightingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HighlightSyntax();
         }
 
+        // Метод виділення синтаксичних ключових слів у тексті
         private void HighlightSyntax()
         {
             string[] keywords = { "int", "string", "float", "if", "else", "for", "while" };
